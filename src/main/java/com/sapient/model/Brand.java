@@ -12,46 +12,37 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "B2C_BRND")
-public class Brand{
+public class Brand {
+	@Id
+	private Integer id;
+	private String name;
 
-    @Id
-    private Integer id;
-    private String name;
+	@JsonIgnoreProperties("brand")
+	@OneToMany(mappedBy = "brand", fetch = FetchType.LAZY)
+	private Set<Product> products;
 
-    @JsonIgnoreProperties("brand")
-    @OneToMany(mappedBy = "brand",fetch = FetchType.LAZY)
-    private Set<Product> products;    
+	public int getId() {
+		return id;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public Set<Product> getProducts() {
+		return products;
+	}
 
-    public Set<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<Product> products) {
-        this.products = products;
-    }
-
-    public Brand() {
-        
-    }
-
-    
-    
+	public void setProducts(Set<Product> products) {
+		this.products = products;
+	}
 
 }
-

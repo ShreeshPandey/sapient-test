@@ -2,12 +2,14 @@ package com.sapient.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.sapient.model.Color;
 import com.sapient.repository.ColorRepository;
 import com.sapient.service.ColorService;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
+@Service
 public class ColorServiceImpl implements ColorService {
 
     @Autowired

@@ -11,113 +11,114 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name="B2C_PRDT")
-public class Product{
+@Table(name = "B2C_PRDCT")
+public class Product {
+	@Id
+	private Integer id;
+	private String name;
+	private Integer quantity;
+	private String size;
 
-    @Id
-    private Integer id;
-    private String name;
-    private Integer quantity;
+	@Column(name = "BRND_ID")
+	private Integer brandId;
 
-    @Column(name="BRND_ID")
-    private Integer brandId;
+	@Column(name = "CLR_ID")
+	private Integer colorId;
 
-    @Column(name="CLR_ID")
-    private Integer colorId;
+	@Column(name = "PRDCT_CTGR_ID")
+	private Integer catagoryId;
 
-    @Column(name="PRDCT_CTGR_ID")
-    private Integer categoryId;
+	@JsonIgnoreProperties("products")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(insertable = false, updatable = false, name = "BRND_ID")
+	private Brand brand;
+	
+	@JsonIgnoreProperties("products")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(insertable = false, updatable = false, name = "CLR_ID")
+	private Color color;
+	
+	@JsonIgnoreProperties("products")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(insertable = false, updatable = false, name = "PRDCT_CTGR_ID")
+	private ProductCategory productCategory;
 
-    @JsonIgnoreProperties("products")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(insertable = false)
-    private Brand brand;
+	public int getId() {
+		return id;
+	}
 
-    @JsonIgnoreProperties("products")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(insertable = false)
-    private Color color;
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    @JsonIgnoreProperties("products")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(insertable = false)
-    private ProductCategory productCategory;
+	public String getName() {
+		return name;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public Integer getQuantity() {
+		return quantity;
+	}
 
-    public Integer getQuantity() {
-        return quantity;
-    }
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
+	public String getSize() {
+		return size;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setSize(String size) {
+		this.size = size;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public Integer getBrandId() {
+		return brandId;
+	}
 
-    public Integer getColorId() {
-        return colorId;
-    }
+	public void setBrandId(Integer brandId) {
+		this.brandId = brandId;
+	}
 
-    public void setColorId(Integer colorId) {
-        this.colorId = colorId;
-    }
+	public Integer getColorId() {
+		return colorId;
+	}
 
-    public Integer getBrandId() {
-        return brandId;
-    }
+	public void setColorId(Integer colorId) {
+		this.colorId = colorId;
+	}
 
-    public void setBrandId(Integer brandId) {
-        this.brandId = brandId;
-    }
+	public Integer getCatagoryId() {
+		return catagoryId;
+	}
 
-    public Integer getCategoryId() {
-        return categoryId;
-    }
+	public void setCatagoryId(Integer catagoryId) {
+		this.catagoryId = catagoryId;
+	}
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
+	public Brand getBrand() {
+		return brand;
+	}
 
-    public Brand getBrand() {
-        return brand;
-    }
+	public void setBrand(Brand brand) {
+		this.brand = brand;
+	}
 
-    public void setBrand(Brand brand) {
-        this.brand = brand;
-    }
+	public Color getColor() {
+		return color;
+	}
 
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public ProductCategory getProductCategory() {
-        return productCategory;
-    }
-
-    public void setProductCategory(ProductCategory productCategory) {
-        this.productCategory = productCategory;
-    }
-
-    
-    
-    
-    
-
+	public void setColor(Color color) {
+		this.color = color;
+	}
+	
+	public void setProductCategory(ProductCategory productCategory) {
+		this.productCategory = productCategory;
+	}
+	public ProductCategory getProductCategory() {
+		return productCategory;
+	}
 }

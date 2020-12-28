@@ -8,7 +8,9 @@ import com.sapient.repository.ProductCategoryRepository;
 import com.sapient.service.ProductCategoryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProductCategoryServiceImpl implements ProductCategoryService {
 
     @Autowired
